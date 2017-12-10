@@ -3,6 +3,7 @@
 <head>
 	<title>CSS HTML Forms Lab</title>
 	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Proza+Libre:400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
 </head>
 <body>
 	<section id="main">
@@ -111,11 +112,34 @@
 		$("form").on("submit", function(event){
 
 		    // Stop the form from submitting
+		    event.preventDefault();
 
 	    	// Run the 'makeResults' function seen above
+	    	makeResults();
+	    	
+	    	var name = $('#name').val();
+	    	$("<p>Once upon a time there was a Developer named " + name + ". </p>" ).appendTo('.results');
+
+	    	var verb1 = $('#verb-1').val();
+	    	$("<p>" + name + " came to General Asssembly to " + verb1 + " the great mountain of programming knowledge. </p>").appendTo('.results');
+
+	    	var mission = $('#mission').val();
+	    	$("<p>" + mission + ", " + name + " shouted. </p>").appendTo('.results');
+
+
+	    	var sentiment = $("input[name=sentiment]:checked").val(); 
+			var noun1 = $("#noun-1").val();
+			$( "<p>Though " + sentiment +  ", " + name + " was able to overcome all obstacles with the power of their " + noun1 + ". </p>" ).appendTo('.results');
+
+			var adjective2 = $("input[name=checkboxes]:checked").val(); 
+
+			var noun2 = $("#noun-2").val();
+			$("<p>In the end, their success can be contributed entirely to their  " + adjective2 + ", " + noun2 + ".</p>").appendTo('results'); 
+
 
 	    	/*
 			
+		
 				For each value entered into a form input, add the input to the corresponding sentence, then append the text into the results section:
 
 				"Once upon a time there was a Developer named NAME."
